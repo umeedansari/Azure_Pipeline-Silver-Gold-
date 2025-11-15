@@ -32,7 +32,7 @@ targets:
 
     permissions:
       - group_name : admins
-      - level : can_manage
+        level : CAN_MANAGE
 
       - user_name: rengokuu679@gmail.com
         level: CAN_MANAGE
