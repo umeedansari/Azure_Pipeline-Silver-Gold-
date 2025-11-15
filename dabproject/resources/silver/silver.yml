@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    silver:
+      name: silver
+      tasks:
+        - task_key: task-1
+          notebook_task:
+            notebook_path: ../../src/silver/transformations.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
