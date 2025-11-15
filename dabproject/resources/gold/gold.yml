@@ -1,0 +1,33 @@
+resources:
+  jobs:
+    gold_layer:
+      name: gold_layer
+      tasks:
+        - task_key: param_task
+          notebook_task:
+            notebook_path: ../../src/gold/params.ipynb
+            source: WORKSPACE
+        - task_key: foreachtable
+          depends_on:
+            - task_key: param_task
+          for_each_task:
+            inputs: "{{tasks.param_task.values.table_name}}"
+            concurrency: 6
+            task:
+              task_key: scd
+              notebook_task:
+                notebook_path: ../../src/gold/scd.ipynb
+                base_parameters:
+                  table_name: "{{input.table_name}}"
+                  cdc_col: "{{input.cdc_col}}"
+                  key_col: "{{input.key_col}}"
+                source: WORKSPACE
+        - task_key: dim_and_fact_views
+          depends_on:
+            - task_key: foreachtable
+          notebook_task:
+            notebook_path: ../../src/gold/dim_and_fact_views.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
