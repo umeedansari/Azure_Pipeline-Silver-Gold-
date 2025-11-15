@@ -1,0 +1,38 @@
+# This is a Databricks asset bundle definition for dabproject.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: dabproject
+  uuid: c44b296d-5f93-4f5e-bd84-c57e1e22a372
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    default: true
+    presets :
+      name_prefix: dev_${workspace.current_user.short_name}
+      source_linked_deployment : false
+    workspace:
+      host: https://adb-328752417440039.19.azuredatabricks.net/
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-328752417440039.19.azuredatabricks.net/
+      # We explicitly deploy to /Workspace/Users/rengokuu679@gmail.com to make sure we only have a single copy.
+      root_path: /Workspace/Users/rengokuu679@gmail.com/.bundle/${bundle.name}/${bundle.target}
+
+    permissions:
+      - group_name : admins
+      - level : can_manage
+
+      - user_name: rengokuu679@gmail.com
+        level: CAN_MANAGE
