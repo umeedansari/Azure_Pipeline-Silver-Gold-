@@ -1,4 +1,4 @@
-# 📘 Silver Layer – Azure Databricks
+# ⚪ Silver Layer – Azure Databricks
 
 The Silver layer transforms **incrementally ingested Bronze data** (from Azure Data Lake via ADF pipelines) into **clean, deduplicated, and analytics-ready datasets** in Delta Lake on Azure Databricks. This layer ensures data is standardized and ready for downstream Gold layer processing and reporting.
 
@@ -26,7 +26,7 @@ The Silver layer transforms **incrementally ingested Bronze data** (from Azure D
 The Silver layer acts as a **cleaning and enrichment stage** between Bronze and Gold layers. It maintains incremental updates, deduplicates and standardizes records, and produces datasets that are ready for reporting, analytics, and machine learning workflows.
 
 
-# 📘 Gold Layer – Azure Databricks
+# 🟡 Gold Layer – Azure Databricks
 
 The Gold layer transforms **Silver layer datasets** into **business-ready, analytics-focused tables** in Delta Lake. It includes **dimension and fact tables** for reporting, BI, and advanced analytics. The Gold layer also implements **Slowly Changing Dimensions (SCD) Type 2 logic** to track historical changes.
 
