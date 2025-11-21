@@ -66,3 +66,7 @@ The Gold layer is the **final curated stage** in the Lakehouse architecture. It 
 
 This layer forms the **core of enterprise reporting and analytics**, leveraging the fully transformed Silver layer data.
 
+## 🔄 Data Flow
+
+<img width="1168" height="728" alt="Screenshot 2025-11-21 112415" src="https://github.com/user-attachments/assets/8df7edb0-dff2-4059-b610-0a81100e052d" />
+
